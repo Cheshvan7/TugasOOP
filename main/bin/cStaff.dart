@@ -2,12 +2,21 @@ import 'Function.dart';
 import 'cDosen.dart';
 
 class cStaff extends cPegawai with Absen {
-  int _tunjanganKehadiran = 0;
+  int sisacuti = 12;
 
-  cStaff(String? nama, int nrp, int sks, int gajidasar, int tunjanganpokok)
-      : super(nama, nrp, sks, gajidasar, tunjanganpokok);
+  cStaff(
+      String? nama, String? nrp, int sks, int gajidasar, int tunjangankehadiran)
+      : super(nama, nrp, sks, gajidasar, tunjangankehadiran);
+
+  void setcuti(int n) {
+    if (n > sisacuti) {
+      print("Jatah Cuti tidak mencukupi");
+    } else {
+      sisacuti -= n;
+    }
+  }
 
   get gaji {
-    return (gajidasar + tunjanganpokok + _tunjanganKehadiran);
+    return (gajidasar + tunjangankehadiran);
   }
 }

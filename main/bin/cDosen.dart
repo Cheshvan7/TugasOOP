@@ -2,22 +2,15 @@ import 'Function.dart';
 import 'cPerson.dart';
 
 class cPegawai extends cPerson {
-  int _gajiDasar = 0;
-  int _tunjanganPokok = 0;
-  int _tunjanganKehadiran = 0;
+  int _gajiDasar = 5000000;
+  int? _tunjanganKehadiran;
 
-  cPegawai(String? nama, int nrp, int sks, int gajidasar, int tunjanganpokok)
-      : super(nama, nrp, sks) {
-    _gajiDasar = gajidasar;
-    _tunjanganPokok = tunjanganpokok;
-  }
+  cPegawai(String? nama, String? nrp, int sks, this._gajiDasar,
+      this._tunjanganKehadiran)
+      : super(nama, nrp, sks);
 
   get gajidasar {
     return _gajiDasar;
-  }
-
-  get tunjanganpokok {
-    return _tunjanganPokok;
   }
 
   get tunjangankehadiran {
@@ -26,28 +19,31 @@ class cPegawai extends cPerson {
 }
 
 class cDosenTetap extends cPegawai with Absen {
-  cDosenTetap(String? nama, int nrp, int sks, int gajidasar, int tunjanganpokok)
-      : super(nama, nrp, sks, gajidasar, tunjanganpokok);
+  cDosenTetap(String? nama, String? nrp, int sks, int gajidasar,
+      int? tunjangankehadiran)
+      : super(nama, nrp, sks, gajidasar, tunjangankehadiran);
 
   get gaji {
-    return (gajidasar + tunjanganpokok + tunjangankehadiran + (sks * 40000));
+    return (gajidasar + tunjangankehadiran + (sks * 40000));
   }
 }
 
 class cDosenLB extends cPegawai with Absen {
-  cDosenLB(String? nama, int nrp, int sks, int gajidasar, int tunjanganpokok)
-      : super(nama, nrp, sks, gajidasar, tunjanganpokok);
+  cDosenLB(String? nama, String? nrp, int sks, int gajidasar,
+      int? tunjangankehadiran)
+      : super(nama, nrp, sks, gajidasar, tunjangankehadiran);
 
   get gaji {
-    return (gajidasar + tunjanganpokok + tunjangankehadiran + (sks * 40000));
+    return (gajidasar + (sks * 40000));
   }
 }
 
 class cDosenTamu extends cPegawai with Absen {
-  cDosenTamu(String? nama, int nrp, int sks, int gajidasar, int tunjanganpokok)
-      : super(nama, nrp, sks, gajidasar = 0, tunjanganpokok);
+  cDosenTamu(String? nama, String? nrp, int sks, int gajidasar,
+      int? tunjangankehadiran)
+      : super(nama, nrp, sks, gajidasar = 0, tunjangankehadiran);
 
   get gaji {
-    return (gajidasar + tunjanganpokok + tunjangankehadiran + (sks * 40000));
+    return (tunjangankehadiran + (sks * 40000));
   }
 }

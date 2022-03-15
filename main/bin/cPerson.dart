@@ -1,19 +1,19 @@
 class cPerson {
   String? _nama;
-  int _nrp = 0;
+  String? _nrp;
   int _sks = 2;
 
   cPerson(this._nama, this._nrp, this._sks);
 
-  set nama(String nama) {
+  void setnama(String nama) {
     _nama = nama;
   }
 
-  set usia(int nrp) {
+  void setnrp(String nrp) {
     _nrp = nrp;
   }
 
-  set umk(int sks) {
+  void setsks(int sks) {
     _sks = sks;
   }
 
@@ -21,8 +21,8 @@ class cPerson {
     return _nama!;
   }
 
-  int get usia {
-    return _nrp;
+  String get nrp {
+    return _nrp!;
   }
 
   int get sks {
